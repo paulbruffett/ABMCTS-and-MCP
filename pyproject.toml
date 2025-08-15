@@ -1,0 +1,17 @@
+[project]
+name = "MCTSandMCP"
+version = "0.0.1"
+description = "Using tree search to evaluate queries and information retrieval"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "langchain-community>=0.3.19",
+    "langchain-experimental>=0.3.4",
+    "langchain-openai>=0.3.8",
+    "langgraph>=0.3.5",
+    "pandas>=2.2.3",
+    "numpy>=2.2.3",
+    "mermaid-python>=0.1",
+    "pydantic>=2.7.4",
+    "fastmcp>=2.8.0",
+]
