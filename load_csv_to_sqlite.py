@@ -10,16 +10,16 @@ def load_database(csv_path: Path | str) -> sqlite3.Connection:
     All columns are stored as TEXT for simplicity.
     """
     csv_path = Path(csv_path)
-    conn = sqlite3.connect(":memory:")
-    with open(csv_path, newline='', encoding='utf-8') as f:
-        reader = csv.reader(f)
-        headers = next(reader)
-        columns_sql = ', '.join(f'[{h}] TEXT' for h in headers)
-        conn.execute(f"CREATE TABLE electric_vehicle_population ({columns_sql})")
-        placeholders = ', '.join('?' * len(headers))
-        insert_sql = f"INSERT INTO electric_vehicle_population VALUES ({placeholders})"
-        conn.executemany(insert_sql, reader)
-    return conn
+    with sqlite3.connect("data/my.db") as conn:
+        with open(csv_path, newline='', encoding='utf-8') as f:
+            reader = csv.reader(f)
+            headers = next(reader)
+            columns_sql = ', '.join(f'[{h}] TEXT' for h in headers)
+            conn.execute(f"CREATE TABLE dv_data (VIN STRING, COUNTY STRING, CITY STRING, STATE STRING, POSTALCODE INTEGER, MODELYEAR INTEGER, MAKE STRING, MODEL STRING, EVTYPE STRING, CAFV STRING, RANGE INTEGER, MSRP FLOAT, DISTRICT INTEGER, ID INTEGER, LOC STRING, UTILITY STRING, TRACT INTEGER)")
+            placeholders = ', '.join('?' * len(headers))
+            insert_sql = f"INSERT INTO dv_data VALUES ({placeholders})"
+            conn.executemany(insert_sql, reader)
+        return conn
 
 
 if __name__ == "__main__":
