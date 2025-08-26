@@ -1,13 +1,8 @@
-import os
-import sys
+
 import sqlite3
 import logging
-import json
-import tempfile
 from contextlib import closing
-from pathlib import Path
-from typing import Dict, Any, List, Optional, Literal
-
+from typing import Dict, Any, List
 from mcp.server.fastmcp import FastMCP
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -30,12 +25,6 @@ def execute_query(query: str, params: Dict[str, Any] = None) -> List[Dict[str, A
                     cursor.execute(query, params)
                 else:
                     cursor.execute(query)
-
-                if query.strip().upper().startswith(('INSERT', 'UPDATE', 'DELETE', 'CREATE', 'DROP', 'ALTER')):
-                    conn.commit()
-                    affected = cursor.rowcount
-                    logger.debug(f"Write query affected {affected} rows")
-                    return [{"affected_rows": affected, "status": "success"}]
 
                 results = [dict(row) for row in cursor.fetchall()]
                 logger.debug(f"Read query returned {len(results)} rows")
