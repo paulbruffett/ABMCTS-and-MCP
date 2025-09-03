@@ -36,6 +36,7 @@ def execute_query(query: str, params: Dict[str, Any] = None) -> List[Dict[str, A
 @mcp_tool()
 async def list_tables() -> Dict[str, Any]:
     """
+    Database contains information on Electric Vehicle registration in the state of Washington.
     List all tables in the SQLite database.
     
     Returns:

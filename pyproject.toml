@@ -15,4 +15,5 @@ dependencies = [
     "pydantic>=2.7.4",
     "fastmcp>=2.8.0",
     "langchain-mcp-adapters>=0.1.9",
+    "treequest[abmcts-m] >=0.1.2",
 ]
