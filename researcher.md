@@ -17,7 +17,7 @@ Plan
 
 Current Context
 
-{{ context }}
+{{ messages }}
 
 Available Tools
 
