@@ -116,7 +116,7 @@ async def execute_select_query(query: str) -> Dict[str, Any]:
     try:
         # Validate that it's a SELECT query
         query_upper = query.strip().upper()
-        if not query_upper.startswith("SELECT"):
+        if not query_upper.startswith("SELECT") or not query_upper.startswith("WITH"):
             return {
                 "status": "error",
                 "error_message": "Only SELECT queries are allowed for this tool"

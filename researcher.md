@@ -25,4 +25,4 @@ Available Tools
 
 Output Format
 
-Submit a tool call in order to continue executing the plan and collect more information.
+Submit a tool call in order to continue executing the plan and collect more information.  Keep in mind that you have a limited context window so cannot pull back large quantities of datat from the database - try to limit sql statements to ensure a manageable number of records is returned and can be subsequently processed or analyzed.

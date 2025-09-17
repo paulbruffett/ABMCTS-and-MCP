@@ -16,6 +16,13 @@ Tools available for use in answering the user's question are:
 
 You can construct a plan that uses these tools iteratively, receiving results and planning subsequent steps or queries depending on the results.
 
+Your plan cannot exceed {{ max_steps }} maximum steps in length, consider how to shorten the number of steps or combine them in order to generate an answer.
+
+# Current Messages
+If portions of the plan have already been executed - here is the current state - reformulate the plan or adjust the method based on this state:
+
+{{ messages }}
+
 # Output Format
 
 Directly output the raw JSON format of `Plan` without "```json". The `Plan` interface is defined as follows:
